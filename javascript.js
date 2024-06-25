@@ -55,7 +55,7 @@ function endGame(){
 }
 
 function playGame(){
-let humanChoice = prompt("Shoot");
+let humanChoice = prompt("Shoot").toLowerCase();
 if (!getHumanChoice(humanChoice)){
     return;
 }
