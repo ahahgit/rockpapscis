@@ -59,9 +59,9 @@ function endGame(){
         finalResult = "You win the game";
     } else if (humanScore < computerScore){
         finalResult = "You lose the game";
-    } else {
+    } else{
         finalResult = "It's a tie";
-    }
+    } 
     console.log(`Game over!\n\Final scores:\nYour score : ${humanScore}\nComputer score : ${computerScore}\n\n${finalResult}`);
     roundDoc.textContent = `Game over!\n\Final scores:\nYour score : ${humanScore}\nComputer score : ${computerScore}\n\n${finalResult}`
     resultDoc.appendChild(roundDoc)
@@ -85,8 +85,6 @@ rockBtn.addEventListener('click',() => {
     playGame();
     if (roundNumber > 5){
         endGame();
-        roundDoc.textContent = 'Refresh to Play Again!';
-        resultDoc.appendChild(roundDoc)
     }
 
 });
@@ -98,8 +96,6 @@ paperBtn.addEventListener('click',() => {
     playGame();
     if (roundNumber > 5){
         endGame();
-        roundDoc.textContent = 'Refresh to Play Again!';
-        resultDoc.appendChild(roundDoc)
     }
 });
 
@@ -110,8 +106,6 @@ scisBtn.addEventListener('click',() => {
     playGame();
     if (roundNumber > 5){
         endGame();
-        roundDoc.textContent = 'Refresh to Play Again!';
-        resultDoc.appendChild(roundDoc)
     }
     });
 
