@@ -13,18 +13,26 @@ function getComputerChoice(){
 
 }
 
+const resultDoc = document.querySelector('#Result');
+const roundDoc = document.createElement('div');
+roundDoc.classList.add('roundDoc')
+
 function getHumanChoice(humanResult){
     if (thrown.includes(humanResult)){
     return true;
     } else{
-        alert("Not an option");
+        console.log("Not an option");
+        roundDoc.textContent = "Not an option";
+        resultDoc.appendChild(roundDoc);
         return false;
     }
 }
 
 function playRound(humanChoice, computerChoice){
     if (humanChoice === computerChoice){
-        alert("It's a tie!");
+        console.log("It's a tie!");
+        roundDoc.textContent = "It's a tie!"
+        resultDoc.appendChild(roundDoc)
     } else if (
         (humanChoice === rock && computerChoice === scissors) ||
         (humanChoice === scissors && computerChoice === rock) ||
@@ -32,10 +40,14 @@ function playRound(humanChoice, computerChoice){
 
     ){
         humanScore++;
-        alert("Victory");
+        console.log("Victory");
+        roundDoc.textContent = "Victory!";
+        resultDoc.appendChild(roundDoc)
     } else {
         computerScore++
-        alert("Loss");
+        console.log("Loss");
+        roundDoc.textContent = "Loss!";
+        resultDoc.appendChild(roundDoc)
     }
 
 }
@@ -50,29 +62,52 @@ function endGame(){
     } else {
         finalResult = "It's a tie";
     }
-    alert(`Game over!\n\Final scores:\nYour score : ${humanScore}\nComputer score : ${computerScore}\n\n${finalResult}`);
+    console.log(`Game over!\n\Final scores:\nYour score : ${humanScore}\nComputer score : ${computerScore}\n\n${finalResult}`);
+    roundDoc.textContent = `Game over!\n\Final scores:\nYour score : ${humanScore}\nComputer score : ${computerScore}\n\n${finalResult}`
+    resultDoc.appendChild(roundDoc)
 
 }
+
+
+
 
 function playGame(){
-let humanChoice = prompt("Shoot").toLowerCase();
-if (!getHumanChoice(humanChoice)){
-    return;
-}
 let computerChoice = getComputerChoice();
 let roundResult = playRound(humanChoice, computerChoice);
-alert(`You chose : ${humanChoice}\nComputer chose : ${computerChoice}\nYour score : ${humanScore}\nComputer score : ${computerScore}`);
+console.log(`You chose : ${humanChoice}\nComputer chose : ${computerChoice}\nYour score : ${humanScore}\nComputer score : ${computerScore}`);
 roundNumber++
 
-if (roundNumber > 5){
-    endGame();
-} else {
-    playGame();
 }
 
-}
-    
-playGame();
+let rockBtn = document.querySelector('#rockButton');
+
+rockBtn.addEventListener('click',() => {
+    humanChoice = rock;
+    playGame();
+    if (roundNumber > 5){
+        endGame();
+    }
+});
+
+let paperBtn = document.querySelector('#paperButton');
+
+paperBtn.addEventListener('click',() => {
+    humanChoice = paper;
+    playGame();
+    if (roundNumber > 5){
+        endGame();
+    }
+});
+
+let scisBtn = document.querySelector('#scisButton');
+
+scisBtn.addEventListener('click',() => {
+    humanChoice = scissors;
+    playGame();
+    if (roundNumber > 5){
+        endGame();
+    }
+    });
 
 
 
