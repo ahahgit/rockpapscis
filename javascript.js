@@ -76,7 +76,6 @@ let computerChoice = getComputerChoice();
 let roundResult = playRound(humanChoice, computerChoice);
 console.log(`You chose : ${humanChoice}\nComputer chose : ${computerChoice}\nYour score : ${humanScore}\nComputer score : ${computerScore}`);
 roundNumber++
-
 }
 
 let rockBtn = document.querySelector('#rockButton');
@@ -86,7 +85,10 @@ rockBtn.addEventListener('click',() => {
     playGame();
     if (roundNumber > 5){
         endGame();
+        roundDoc.textContent = 'Refresh to Play Again!';
+        resultDoc.appendChild(roundDoc)
     }
+
 });
 
 let paperBtn = document.querySelector('#paperButton');
@@ -96,6 +98,8 @@ paperBtn.addEventListener('click',() => {
     playGame();
     if (roundNumber > 5){
         endGame();
+        roundDoc.textContent = 'Refresh to Play Again!';
+        resultDoc.appendChild(roundDoc)
     }
 });
 
@@ -106,10 +110,10 @@ scisBtn.addEventListener('click',() => {
     playGame();
     if (roundNumber > 5){
         endGame();
+        roundDoc.textContent = 'Refresh to Play Again!';
+        resultDoc.appendChild(roundDoc)
     }
     });
-
-
 
 
 
